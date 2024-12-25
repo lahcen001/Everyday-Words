@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './WordPractice.css';
 
 const WordPractice = () => {
@@ -11,10 +11,10 @@ const WordPractice = () => {
     'guitar', 'hospital', 'internet', 'jungle', 'kitchen'
   ]);
 
-  const getRandomWord = () => {
+  const getRandomWord = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * wordList.length);
     return wordList[randomIndex];
-  };
+  }, [wordList]);
 
   const speakWord = (word) => {
     const utterance = new SpeechSynthesisUtterance(word);
@@ -39,7 +39,7 @@ const WordPractice = () => {
 
   useEffect(() => {
     setCurrentWord(getRandomWord());
-  }, []);
+  }, [getRandomWord]);
 
   return (
     <div className="word-practice">

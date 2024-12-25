@@ -26,19 +26,19 @@ export default function LoginPage() {
     setError('');
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      // Simple validation
+      if (!email || !password) {
+        setError('Please fill in all fields');
+        return;
+      }
 
-      if (response.ok) {
-        router.push('/dashboard');
+      // For demo purposes, accept any valid email/password
+      if (email.includes('@') && password.length >= 6) {
+        // Simulate successful login
+        localStorage.setItem('isLoggedIn', 'true');
+        router.push('/practice');
       } else {
-        const data = await response.json();
-        setError(data.message || 'Login failed');
+        setError('Invalid email or password');
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
