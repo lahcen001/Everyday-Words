@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #2196F3;
+  padding: 1rem;
+  color: white;
+}
+
+.navbar-brand a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-brand a:hover {
+  color: #e3f2fd;
+} 

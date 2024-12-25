@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { 
   Container, 
@@ -9,15 +7,16 @@ import {
   Paper,
   Grid,
   Card,
-  CardContent
+  CardContent,
+  CardMedia 
 } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import SchoolIcon from '@mui/icons-material/School';
 
-export default function HomePage() {
-  const router = useRouter();
+function HomePage() {
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -47,7 +46,7 @@ export default function HomePage() {
                 bgcolor: '#e3f2fd',
               }
             }}
-            onClick={() => router.push('/practice')}
+            onClick={() => navigate('/practice')}
           >
             Start Learning
           </Button>
@@ -100,3 +99,5 @@ export default function HomePage() {
     </Container>
   );
 }
+
+export default HomePage; 
